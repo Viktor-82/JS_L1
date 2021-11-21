@@ -1,4 +1,16 @@
-let constantClient = confirm('Вы являетесь постоянным клиентом?')
-constantClient ? 30 : 10;
-let discount = constantClient ? 30 : 10;
-alert(`Ваша скидка ${discount}%`);
+'use strict';
+
+let day = prompt('Введите день недели');
+switch(day) {
+    case 'среда':
+        console.log('мы успеваем');
+        break;
+    case 'четверг':
+        console.log('скоро выходные');
+        break;
+    case 'пятница':
+        console.log('последний рабочий день');
+        break;
+    default:
+        console.log('я такого дня не знаю');
+}
