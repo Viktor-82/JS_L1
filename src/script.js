@@ -1,27 +1,31 @@
 'use strict';
-/* объявление функции */
-function showDay() {
-    /* вызываем объект Date при помощи оператора new (создание нового экземпляра объекта) метод getDay возвращает порядковый номер дня недели (0 - Воскресенье) результат записыватся в переменную dayNum */
-    let dayNum = new Date().getDay();
-    /* в переменную day пишем строку с названием дня недели соответствующего 
-    номеру дня */
-    let day = "";
-    switch (dayNum) {
-        case 4:
-            day = "Четверг";
-            break;
-        case 5:
-            day = "Пятница";
-            break;
-        case 0:
-            day = "Воскресенье";
-            break;
-        default:
-            day = false;
-    }
-    /* оператор return прекращает выполнение функции как только она доходит до него и возвращает результат работы функции в переменную */
-    return day;
+
+function roundToHundredths(number) {
+    /* parseInt отбрасывает дробную часть */
+    return parseInt(number * 100) / 100;
 }
-/* вызываем функцию. 
-let result = showDay(); будет записана строка из переменной day существующей только внутри функции */
-let result = showDay();
+
+/* объявляем функцию, (roudles, currency) - параметры функции*/
+function convertCurrency(roubles, currency) {
+    let currencyCost = 0;
+    switch (currency) {
+        case 'dollar':
+            currencyCost = 66;
+            break;
+        case 'euro':
+            currencyCost = 75;
+            break;
+        default: 
+        /* оператор throw выбрасывает ошибки, new - оператор создания объекта, Error - объект ошибок */
+        throw new Error('Не верная валюта: ' + currency);
+    }
+    return roundToHundredths(roubles / currencyCost);
+}
+
+/* вызываем функцию и передаем в нее аргументы (число 100 и строка 'dollar') - аргументы которые передаем в функцию */
+let inDollars = convertCurrency(100, 'dollar');
+console.log('Ваша сумма в долларах: ' + inDollars);
+let inEurus = convertCurrency(100, 'euro');
+console.log('Ваша сумма в евро: ' + inEurus);
+let inYens = convertCurrency(100, 'yena');
+console.log('Ваша сумма в йенах: ' + inYens);
