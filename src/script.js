@@ -1,15 +1,16 @@
 'use strict';
 /**
- * стрелочная функция
- * @returns console.log в данном случае
- * ключевое слово returns после => всегда выполняется
+ * рекурсия. функция вызывает саму себя
+ * @param {*} n 
+ * @returns 
  */
-const sayHello = () => console.log('hello');
-/* соответствует формату
-function sayHello() {
-    return console.log('hello');
-} 
-*/
+const factorial = (n) => {
+    if (n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n-1);
+    }
+}
 
-/* вызов функции как обычно*/
-sayHello();
+const answer = factorial(3);
+console.log(answer);
