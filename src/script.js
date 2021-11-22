@@ -1,19 +1,15 @@
 'use strict';
-
 /**
- * функция с использованием rest оператора
- * @param {*} first 
- * @param {*} second 
- * @param  {...any} other rest оператор который получает 
- * (или вообще ничего не получает-по обстоятельствам) массив данных
- * для дальнейшего использования
+ * стрелочная функция
+ * @returns console.log в данном случае
+ * ключевое слово returns после => всегда выполняется
  */
-function showWords(first, second, ...other) {
-    console.log('первое слово: ' + first); // один
-    console.log('второе слово: ' + second); // два
-    console.log('остальные слова: ' + other); // три, четыре, пять
-    console.dir(other); //['три', 'четыре', 'пять']
+const sayHello = () => console.log('hello');
+/* соответствует формату
+function sayHello() {
+    return console.log('hello');
+} 
+*/
 
-}
-
-showWords('один', 'два', 'три', 'четыре', 'пять');
+/* вызов функции как обычно*/
+sayHello();
