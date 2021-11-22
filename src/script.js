@@ -1,42 +1,18 @@
 'use strict';
 
-let symbols = '1234567890!@#$%^&*()-_=+;:][}{/?.,qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCBNM';
-let password = '';
+/* инкремент постфиксная форма а++ 
+сначала передается значение а в переменную слева. 
+потом в a записывается число больше а на единицу */
+let a = 0;
+let result = a++;
 
-/**
- * Функция возвращает случайное целое число между min (включительно) и max (не включая max)
- * @param {*} min 
- * @param {*} max 
- * @returns {number}
- */
-function getRandomInt(min, max) {
-    /* .random - выбор случайного числа .floor - отбрасывает дробную часть */
-    return Math.floor(Math.random() * (max - min)) + min; 
-}
+/* инкремент префиксная форма единица сразу прибавляется к а 
+и записывается в переменную слева*/
+let a = 0;
+let result = ++a;
 
-/**
- * Функция генерирует случайный пароль
- * @param {number} passLength длина пароля
- * @returns {void}
- */
-function generate(passLength) {
-    let symbolPosition = getRandomInt(0, 87); // массив от 0 до 86. последнее число не включается
-    password += symbols.charAt(symbolPosition); // += дописывает символ в массив
-    passLength--; // -- уменьшает на единицу
-    if (passLength != 0) {
-        generate(passLength);
-    }
-}
+/* декремент принцип тоже только на уменьшение единицы */
+let a = 0;
+let result = a--;
 
-/**
- * Функция запрашивает длину пароля
- * @returns {number}
- */
-function askPassLength() {
-    return parseInt(prompt('Введите длину пароля'));
-}
-
-/* Вызываем функцию generate и передаем в нее значение функции 
-askPassLength() - эта запись тоже вызов функции askPassLength */
-generate(askPassLength());
-alert(`Ваш пароль: ${password}`);
+let result = --a;
