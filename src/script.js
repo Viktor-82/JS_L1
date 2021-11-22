@@ -1,26 +1,19 @@
 'use strict';
 
+/**
+ * функция с использованием rest оператора
+ * @param {*} first 
+ * @param {*} second 
+ * @param  {...any} other rest оператор который получает 
+ * (или вообще ничего не получает-по обстоятельствам) массив данных
+ * для дальнейшего использования
+ */
+function showWords(first, second, ...other) {
+    console.log('первое слово: ' + first); // один
+    console.log('второе слово: ' + second); // два
+    console.log('остальные слова: ' + other); // три, четыре, пять
+    console.dir(other); //['три', 'четыре', 'пять']
 
-let order1Discount = setDiscount(15);
-alert(order1Discount);
-
-let order2Discount = setDiscount();
-alert(order2Discount);
-
-/* function declaration вызвать можно до объявления самой функции */
-function setDiscount(discount = 10) {
-    if (discount > 30) {
-        return 30;
-    }
-    return discount;
-    /* после фигурных скобок точка с запятой не обязательна */
 }
 
-
-/* function expression или анонимная функция (без имени) вызвать можно только после объявления */
-let getSquare = function(x) {
-    return x * x;
-    /* точка с запятой после скобок обязательна */
-};
-
-console.log(getSquare(3));
+showWords('один', 'два', 'три', 'четыре', 'пять');
