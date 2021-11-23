@@ -1,10 +1,10 @@
 'use strict';
 
-let arr = ['hello', 'world', '!'];
+let arr = [2, 9];
 
-/* Метод pop() удаляет последний элемент из массива 
-и возвращает его значение
+/* Метод push добавляет один и более элементов
+в конец массива и возвращает новую длину массива
  */
-let last = arr.pop();
-console.log(last);// '!'
-console.log(arr);// ['hello', 'world']
+let newLength = arr.push(14);
+console.log(newLength);// 3
+console.log(arr);// [2, 9, 14]
