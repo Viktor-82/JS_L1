@@ -1,16 +1,15 @@
 'use strict';
 
-let clients = ['Василий', 'Семен', 'Екатерина', 'Владимир', 'Валентина'];
+let prices = [53, 107, 81, 45, 35];
 
-/* Метод filter() создает новый массив со всеми элементами, 
-прошедшими проверку, задаваемую в передаваемой функции.
+/* Метод find() возвращает значение первого найденого в массиве элемента, 
+которое удовлетворяет условию переданному в callback функции. В противном
+случае возвращается undefined.
  */
-let vLetterClients = clients.filter(function(element) {
-    return element.charAt(0) == 'В';
-    /* если функция вернет true, то переданный элемент попадет 
-    в новый массив, если false, то нет */
-})
+let lessThan50 = prices.find(function(element) {
+    return element < 50;
+});
 
 
-console.log(vLetterClients);// ['Василий', 'Владимир', 'Валентина']
+console.log(lessThan50);// 45
 
