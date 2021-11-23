@@ -1,10 +1,10 @@
 'use strict';
 
-let arr = [2, 9];
+let images = ['1.jpg', '2.jpg', '3.png'];
 
-/* Метод push добавляет один и более элементов
-в конец массива и возвращает новую длину массива
+/* Метод shift() удаляет первый элемент из массива и 
+возвращает его значение. Соответственно длина массива меняется.
  */
-let newLength = arr.push(14);
-console.log(newLength);// 3
-console.log(arr);// [2, 9, 14]
+let firstElem = images.shift();
+console.log(firstElem);// 1.jpg
+console.log(images);// ['2.jpg', '3.png']
