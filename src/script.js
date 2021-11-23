@@ -1,15 +1,12 @@
 'use strict';
 
-let prices = [53, 107, 81, 45, 35];
+let userId = [329, 235235, 95027, 400];
 
-/* Метод find() возвращает значение первого найденого в массиве элемента, 
-которое удовлетворяет условию переданному в callback функции. В противном
-случае возвращается undefined.
+/* Метод includes() определяет, содержит ли массив определенный элемент,
+возвращая в зависимости от этого true или false.
  */
-let lessThan50 = prices.find(function(element) {
-    return element < 50;
-});
+let isOnline = userId.includes(400);
 
 
-console.log(lessThan50);// 45
+console.log(isOnline);// true
 
