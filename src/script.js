@@ -1,23 +1,16 @@
 'use strict';
 
-/* Создание функции конструктора с использованием
-другой существующей функции конструктора
- */
-function UserRole() {
-    this.rights = ['create', 'edit'];
-    // this.__proto__ = UserRole.prototype
-}
+/* Базовый объект на основе которого будут создаваться другие объекты */
+const post_parent = {
+    role: 'user', // автор по умолчанию user
+    userName: null, // имени по умолчанию нет
+    showRole: function () {
+        console.log(this.role);
+    }
+};
+/* Создание нового объекта методом .create базового объекта JS - Object */
+let post1_child = Object.create(post_parent);
+post1_child.userName = 'Alex'; // присвоение значения userName в созданный объект
+post1_child.role = 'superAdmin';
 
-function ModerRole() {
-    UserRole.call(this);
-    this.rights.push('delete');
-    // this.__proto__ = ModerRole.prototype
-}
-/* Та же функция в другой записи
-function ModerRole() {
-    let hello = this;
-    UserRole.call(hello);
-    this.rights.push('delete');
-}
- */
-const moderRole1 = new ModerRole();
+console.log(post1_child);
