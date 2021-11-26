@@ -1,122 +1,109 @@
 'use strict';
 
-/* Определяет четные и нечетные цифры */
-/* for (let i=0; i<=10; i++) {
-     let result = i % 2
-     if (i<1) {
-         console.log(i + ' - это ноль');
-     } else if (result) {
-         console.log(i + ' - нечетное число');
-     } else {
-         console.log(i + ' - четное число');
-     };
-}; */
+let newObject = {
+    units: null,
+    tens: null,
+    hundreads: null
+}
 
-
-/* Выводим данные в консоль */
-/* const post = {
-    author: 'John',// <=
-    postId: 23,
-    comments: [
-        {
-            userId: 10,
-            userName: 'Alex',
-            text: 'lorem ipsum',
-            rating: {
-                likes: 10,
-                dislikes: 2,// <=
-            }
-        },
-        {
-            userId: 5,// <=
-            userName: 'Jane',
-            text: 'lorem ipsum 2',// <=
-            rating: {
-                likes: 3,
-                dislikes: 1
-            }
-        },
-    ]
+/**
+ * Функция преобразовывает число в объект. 
+ * На входе число от 0 до 999
+ * На выходе в свойствах количество: единиц, десятков, сотен.
+ */
+function createObject (num) {
+    if (typeof num === 'number' && Number.isInteger(num) == true && num >= 0 && num <= 999) {
+    newObject.units = num % 10;
+    newObject.tens = Math.floor(num/10);
+    newObject.hundreads = Math.floor(num/100);
+    return newObject;
+} else {
+    console.log('Введите корректные данные');
+    return null;
+};
 };
 
-console.log(post.author);
-console.log(post.comments[0].rating.dislikes);
-console.log(post.comments[1].userId);
-console.log(post.comments[1].text); */
+createObject(945); 
+console.log(newObject);
 
+/* Задача 2 функция конструктор с методом добавляющим скидку 25%
+в синтаксисе ES5 */
+function Product (name, price) {
+    this.name = name;
+    this.price = price;
+};
+Product.prototype.make25PercentDiscount = function () {
+    this.price = this.price*0.75;
+    console.log('Скидка 25%');
+}
 
-/* Применяем скидку 15% */
-/* const products = [
-    {
-        id: 3,
-        price: 200,
-    },
-    {
-        id: 4,
-        price: 900,
-    },
-    {
-        id: 1,
-        price: 1000,
-    },
-];
+let goods = new Product('salo', 300);
+goods.make25PercentDiscount();
+console.log(goods);
 
-products.forEach(element => {
-    console.log(`Цена товара ${element.id} только сегодня ${element.price*0.85} рублей с учетом скидки 15% `);
-}); */
-
-
-/* Делаем новый массив из существующего по признаку наличия фото.
-Сортируем товары по цене.
- */
-const products = [
-    {
-        id: 3,
-        price: 127,
-        photos: [
-            '1.jpg',
-            '2.jpg',
-        ]
-    },
-    {
-        id:5,
-        price: 499,
-        photos: []
-    },
-    {
-        id: 10,
-        price: 26,
-        photos: [
-            '3.jpg'
-        ]
-    },
-    {
-        id: 8,
-        price: 78,
-    },
-];
-
-let actualProducts = products.filter(function (element) {
-    /* Если просто написать element.photos.length > 0 будет ошибка. Поэтому отдельно проверяем есть ли элемент photos в объекте и больше ли нуля его длинна */
-    if (element.photos && element.photos.length > 0)
-    return element;
-});
-/* Длинный вариант записи сортировки */
-/* let sortActualProducts = actualProducts.sort(function(price1, price2){
-    if (actualProducts[0].price > actualProducts[1].price) {
-    return -1;
+/* Задача 2 функция конструктор с методом добавляющим скидку 25%
+в синтаксисе ES6 */
+class Product2 {
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
     }
-    if (actualProducts[1].price > actualProducts[0].price) {
-    return 1;
+    makeDiscount() {
+        this.price = this.price*0.75;
+    }    
+};
+
+let getProduct = new Product2('Гречка', 100);
+console.log(getProduct);
+getProduct.makeDiscount();
+console.log(getProduct);
+
+/* Задача 3 наследование конструктора в синтаксисе ES5 */
+function Post (author, text, date) {
+    this.author = author;
+    this.text = text;
+    this.date = date;
+}
+Post.prototype.edit = function() {
+    this.text = prompt('Введите текст');
+};
+function Post2 (author, text, date, comment) {
+/* Наследование классов функции конструктора происходит вызовом через ключевое слово .call */
+    Post.call(this, author, text, date);
+    this.comment = comment;
+} 
+/* Создаем прототип Post2 из методом .create объекта Object с целью наследования функции записаной в prototype Post*/
+Post2.prototype = Object.create(Post.prototype);
+/* Переписываем руками конструктор на основе которого будет создаваться прототип Post2 */
+Post2.prototype.constructor = Post2;
+
+let writer = new Post2('Joe', null, '26.11.21');
+writer.comment = 'какой чудесный день';
+writer.edit('hello');
+console.log(writer);
+
+/* Задача 3 наследование в синтаксисе ES6 */
+class Posted { 
+    constructor(author, text, date) {
+        this.author = author;
+        this.text = text;
+        this.date = date;
     }
-    return 0;
-});
- */
- 
-/* Короткий вариант записи сортировки */
-let sortActualProducts = actualProducts.sort(function(item1, item2){
-    return item1.price - item2.price;
-});
+    edit() {
+        this.text = prompt('Введите текст');
+    };
+};
+/* Ключевое слово super вызывает конструктор родителя прописанный после extends 
+Метод edit при этом тоже наследуется, его не нужно отдельно прописывать. 
+Конструктор из которого создается edit уже ставится корректный Posted2 */
+class Posted2 extends Posted {
+    constructor(author, text, date, comment) {
+        super(author, text, date);
+        this.comment = comment;
+    }        
+};
 
-console.log(actualProducts); 
-
+let getPosted = new Posted2('Den', null, '15.11.21');
+getPosted.edit();
+getPosted.comment = 'мой комментарий';
+console.log(getPosted);
