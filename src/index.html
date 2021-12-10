@@ -5,38 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title> 
-    <!-- Ссылка на fontawesome нужна чтобы отображались иконки -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-    <link rel="stylesheet" href="likes.css">    
+    <link rel="stylesheet" href="sort.css">    
 </head>
 <body>
-    
-    <div class="container">
-        <div class="post">
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dignissimos hic accusantium eaque unde illum obcaecati dolore, delectus officiis nihil!
-            </p>
-            Нравится: <i class="far fa-heart"></i>
-        </div>
-        <div class="post">
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dignissimos hic accusantium eaque unde illum obcaecati dolore, delectus officiis nihil!
-            </p>
-            Нравится: <i class="far fa-heart"></i>
-        </div>
-        <div class="post">
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dignissimos hic accusantium eaque unde illum obcaecati dolore, delectus officiis nihil!
-            </p>
-            Нравится: <i class="far fa-heart"></i>
-        </div>
-        <div class="post">
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dignissimos hic accusantium eaque unde illum obcaecati dolore, delectus officiis nihil!
-            </p>
-            Нравится: <i class="far fa-heart"></i>
-        </div>
+<div class="sort">
+    Сортировка по цене:
+    <input id="from" type="text" placeholder="от">
+    -
+    <input id="to" type="text" placeholder="до">
+</div>
+<div class="container">
+    <div class="product">
+        <div>Товар 1</div>
+        <img src="https://picsum.photos/200/200?random=1" alt="#">
+        Цена: <span class="price">360</span> р.
     </div>
-    <script src="likes.js"></script>   
+    <div class="product">
+        <div>Товар 2</div>
+        <img src="https://picsum.photos/200/200?random=2" alt="#">
+        Цена: <span class="price">105</span> р.
+    </div>
+    <div class="product">
+        <div>Товар 3</div>
+        <img src="https://picsum.photos/200/200?random=3" alt="#">
+        Цена: <span class="price">154</span> р.
+    </div>
+    <div class="product">
+        <div>Товар 4</div>
+        <img src="https://picsum.photos/200/200?random=4" alt="#">
+        Цена: <span class="price">900</span> р.
+    </div>
+    <div class="product">
+        <div>Товар 5</div>
+        <img src="https://picsum.photos/200/200?random=5" alt="#">
+        Цена: <span class="price">65</span> р.
+    </div>
+    <div class="product">
+        <div>Товар 6</div>
+        <img src="https://picsum.photos/200/200?random=6" alt="#">
+        Цена: <span class="price">700</span> р.
+    </div>
+    <div class="product">
+        <div>Товар 7</div>
+        <img src="https://picsum.photos/200/200?random=7" alt="#">
+        Цена: <span class="price">280</span> р.
+    </div>
+    <div class="product">
+        <div>Товар 8</div>
+        <img src="https://picsum.photos/200/200?random=8" alt="#">
+        Цена: <span class="price">1020</span> р.
+    </div>
+</div>
+    <script src="sort.js"></script>   
 </body>
 </html>

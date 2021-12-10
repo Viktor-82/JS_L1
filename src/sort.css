@@ -1,0 +1,30 @@
+.sort {
+    width: 960px;
+    margin: 0 auto;
+    padding: 40px 0;
+    font-size: 24px;
+}
+
+.container {
+    width: 960px;
+    margin: 0 auto;
+    display: grid;
+    /* Если между repeat и скобками будет пробел 
+    то код работать не будет */
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+
+.product img {
+    display: block;
+    width: 100%;
+}
+
+.product .price {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+input {
+    font-size: 24px;
+}
