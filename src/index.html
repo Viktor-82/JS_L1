@@ -7,124 +7,77 @@
     <title>Document</title>
 </head>
 <body>
+<style>
+    .attention {
+        color: red;
+    }
+</style>
+<img src="https://placeimg.com/6400/4800/nature" alt="img">
 
-<!-- Синтаксис запросов к элементам -->
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
-  <h2>Lorem, ipsum.</h2>
-  <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-  </ul>
-  <p>hello world</p>
-  <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</i>
-  <p>привет мир</p>
-
-<!-- Запрос по селектору коллекции элементов -->
-  <form action="/feedback">
-    <input type="text">
-    <input type="text"> 
-    <button>Send</button>
-  </form>    
-
-<!-- Запрос по селектору первого попавшегося элемента с заданными параметрами -->
-  <div class="user">one</div>
-  <div class="user">two</div>
-  <div class="user">three</div>
-
-<!-- Запрос по имени -->
-  <form action="#">
-    <input type="text" name="user">
-    <input type="text" name="pass">
-    <input type="text" name="user">
-    <button>Send</button>
-  </form>  
-
-<!-- Запросить все изображения (не по тегу img) -->
-  <img src="https://cdn.pixabay.com/photo/2021/11/15/05/52/red-fox-6796430_960_720.jpg" alt="fox">
-  <img src="https://cdn.pixabay.com/photo/2012/06/19/10/32/owl-50267_960_720.jpg" alt="owl">
-  <img src="https://cdn.pixabay.com/photo/2016/10/21/14/46/fox-1758183_960_720.jpg" alt="arctic_fox">
-
-<!-- Запросить все ссылки. Выбираются только те где есть атрибут href
-и теги area (назначает невидимую область на документе которая будет ссылкой) -->
-  <a href="">link1</a>
-  <a>link2</a>
-  <a href="">link3</a>
-
-<!-- 1) Запросить дочерние элементы по определенным параметрам
-     2) Запросить родительский узел из дочернего элемента через свойство .parentNode 
-     3) Запросить все дочерние узлы включая текстовые через свойство .childNodes
-     4) Запросить дочерние теги исключая текстовые узлы -->
-  <div class="product">
-      <div class="productName">product</div> 
-      <img src="#" alt="">
-      <button>buy</button>
-      <div class="discount">
-          your discount is: <span>30%</span>
-      </div>
-  </div>
-
-<!-- Запросить/изменить текст внутри блока -->
-  <div>
-      Hello <span style="display: none;">World</span>
-  </div>
-
-<!-- Добавляем элемент в список дочерних элементов родителя 
-    перед указаннымм элементом -->
-  <button class="btn btn-large">btn</button>  
-  
-<!-- Удаление относительно родителя (body) -->
-  <ul>
-      <li></li>
-      <li></li>
-  </ul>
-
-<!-- Удаление элемента методом .remove() -->
-  <h2>Test Text</h2>
-
-<!-- Замена элементов через родительский элемент методом .replaceChild -->
-<div class="parentClass">
-    <p>Lorem, ipsum dolor.</p>
-</div>
-
-<!-- Получить все методы элемента для работы с ними (DOMTokenList) -->
-<button class="btn btn-large" id="my_button">btn</button> 
-
-<!-- Изменение разметки внутри элемента -->
-  <p id='one'> Какой то текст<i>hello</i> </p>    
-  
- <!-- Изменение текста внутри элемента --> 
- <h4>Lorem ipsum dolor sit amet.</h4>
-
- <!-- Изменение любых атрибутов (class, id и т.д.) -->
- <div class="product" data-lang="russian"></div>
- <!-- Можно создавать в элементе любой атрибут через 
-    ключевое слово data(-название_атрибута в нижнем регистре) -->
-
-
- <!-- Добавить разметку массово -->   
-
-    <!-- beforebegin (перед открывающим тегом) -->
-    <button>
-    <!-- afterbegin (после открывающего тега) -->
-    Кнопка
-    <!-- beforeend (перед закрывающим тегом) -->
-    </button>
-    <!-- afterend (после закрывающего тега) -->
-
-<!-- Прочитать величину прокрутки (если много контента и есть полоса прокрутки) -->    
-    <p class="manyText">
-        Lorem ipsum, dolor sit amet consectetur adipisicing <br> 
-        elit. In eum rem nam est ipsa quos animi praesentium <br>
-         facilis. Sit, dignissimos nisi nam ab exercitationem <br>
-         mollitia, tenetur repellendus tempore odio esse minima <br>
-         cum. Dolore explicabo quia a recusandae reprehenderit <br> 
-        aut, excepturi dolorum natus sunt dolorem inventore <br> 
-        libero nulla accusamus nobis atque neque culpa odio <br>
-         nemo voluptate, minus non nam iure officia labore. <br>
-         Odio amet reiciendis doloribus delectus dolorum, aliquam quod sint!
+<div>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem harum adipisci impedit.
+        <button>Кнопка</button>
     </p>
+</div>
+<button class="checkEvent">Кнопка проверки события</button>
+<button class="switchOff">Удалить обработчик события</button>
+<!-- Добавление изменение стилей элемента -->
+<h1>Hello</h1>
+
+<!-- Добавление изменение стилей элемента путем добавления класса -->
+<h2>Изменение стилей элемента</h2>
+<button class="delete">Удалить</button>
+
+<!-- Отслеживание событий копирования -->
+Lorem ipsum dolor sit amet.
+<br>
+<textarea></textarea>
+
+<!-- Отслеживание события вырезания -->
+<textarea>Lorem ipsum dolor sit amet.</textarea>
+
+<!-- Отслеживание события двойной клик -->
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
+     sunt hic dolorem, assumenda nesciunt molestiae eum fugiat 
+     quos impedit asperiores optio nemo possimus reiciendis? 
+     Repellendus.</p>
+
+<!-- Отслеживание события resize (изменение размера окна) -->
+
+<!-- Отслеживание события scroll (прокрутка) -->
+Lorem ipsum dolor sit amet consectetur adipisicing elit. At quas 
+fugiat odit animi ratione, molestias vero consequatur nam labore 
+repudiandae tenetur, voluptatum numquam! Repellendus optio unde, 
+illo a explicabo delectus dignissimos earum facere sint fugiat 
+beatae perspiciatis, eius, recusandae dolore! Exercitationem, vel 
+doloribus! Doloremque quis sint error assumenda ratione quas.
+
+<!-- Событие на снятие фокуса с поля для ввода (blur) и наведение фокуса -->
+<input type="text">
+
+<!-- Отслеживание любого изменения (событие change) -->
+<select>
+    <option value="one">один</option>
+    <option value="two">два</option>
+    <option value="three">три</option>
+</select>
+
+<!-- Отследить изменение текста в каком либо селекторе -->
+<textarea>Lorem, ipsum dolor.</textarea>
+
+<!-- Событие reset -->
+<form action="reset.html" method="get">
+    <input type="text" name="login">
+    <button class="submit">Отправить</button>
+    <button type="reset">Очистить</button>
+</form>
+
+<!-- Событие submit (отправка формы) -->
+<form action="index.html" method="post">
+    <input type="text" name="login">
+    <div class="error"></div>
+    <button>Отправить</button>
+</form>
 
     <script src="script.js"></script>   
 </body>
