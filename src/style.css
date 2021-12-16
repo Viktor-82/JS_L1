@@ -1,0 +1,206 @@
+/* Карточки товаров.
+содержить style. images.
+Задание.
+1. Сделайте всем элементам .product какой-нибудь фон, для этого:
+    1.1 Найдите все элементы с классом .product, например с помощью
+    querySelectorAll
+    1.2 Затем переберите эту коллекцию, например с помощью forEach,
+    у коллбэк-функции, передаваемой в forEach определите параметр,
+    назовите его например product
+    1.3 Чтобы менять стили обратитесь к параметру product и его свойству
+    style
+
+2. Сделайте элементам .productName размер шрифта 24px, для этого:
+    2.1 Найдите все элементы с классом .productName, например с помощью
+    querySelectorAll
+    2.2 Затем переберите эту коллекцию, например с помощью forEach,
+    у коллбэк-функции, передаваемой в forEach определите параметр,
+    назовите его например name
+    2.3 Чтобы менять стили обратитесь к параметру name и его свойству
+    style */
+    .product {
+        width: 200px;
+        padding: 10px;
+        float: left;
+        margin-right: 30px;
+        box-shadow: 0 0 4px black;
+    }
+
+/* Анимация.
+Содержит style. + внешние стили
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+Задание.
+1. Сохраните в переменную btn ссылку на кнопку.
+2. Сохраните в переменную msg ссылку на .message.
+3. На btn назначьте обработку клика.
+    3.1 Внутри функции-обработчика сделайте чтобы у msg display становился block.
+    3.2 Для msg с помощью classList.add() добавьте классы animate__animated и
+    animate__fadeInLeftBig */
+    .message {
+        width: 150px;
+        padding: 20px;
+        background: lightgoldenrodyellow;
+        border: 1px solid orange;
+        display: none;
+    }
+
+/* rating.
+содержит style. + внешние стили
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity=
+"sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /> 
+Задание. Используя заготовку, сделайте чтобы при наведении на вторую звезду
+подсвечивались первая и вторая звезды. При наведени на третью звезду подсвечивались
+первая, вторая и третья звезды, и т.д.
+mouseover - это событие срабатывает когда мы наводим на элемент.
+mouseout - это событие срабатывает когда мы перестаем наводить на элемент. */
+i {
+    font-size: 50px;
+}
+.golden {
+    color: gold;
+}
+
+/* Добавление в корзину.
+Содержит style. images. 
+Задание. Нужно чтобы при клике по кнопке блок .product в котором она
+находится становился цвета lightgreen, а текст на кнопке стал "Добавлено",
+для этого:
+1. Найдите все кнопки, например с помощью querySelectorAll
+2. Переберите полученную коллекцию кнопок, например с помощью forEach,
+и каждой кнопке назначьте в качестве обработчика клика фукнцию
+buttonClickHandler (увидите ее ниже в коде)
+3. Когда функция buttonClickHandler будет срабатывать вы из объекта
+события получаете элемент на котором произошло событие (свойство target),
+затем получаете родителя кнопки по коротой кликнули (свойство parentNode),
+затем обращаетесь к свойству style, а затем к свойству background и
+ставите цвет lightgreen.
+3.1 Также во время срабатывания функции buttonClickHandler из обекта
+события (параметр event) вы получаете кнопку на которой произошло
+событие (свойство target) и меняете у нее текст на "Добавлено". */
+.product {
+    padding: 20px;
+    float: left;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+}
+
+/* Валидация формы.
+Содержит style.
+Задание. Вам нужно проверять пусто ли в input'ах при отправке формы.
+    Если в инпуте пусто делаете ему красную рамку. Если хотя бы в одном
+    инпуте пусто форма не должна отправляться.
+    1. сохраните в переменную formEl ссылку на форму
+    2. сохраните в переменную ссылку на input#first
+    3. сохраните в переменную ссылку на input#second
+    4. на formEl назначьте обработку события отправки формы (submit),
+    у функции-обработчика объявите параметр event.
+        4.1 в функции-обработчике вы проверяете пусты ли input'ы, для этого
+        читайте у них свойство value
+        4.2 если input пустой тогда вы обращаетесь к его style.borderColor
+        и делаете его равным red
+        4.3 чтобы остановить отправку формы используйте event.preventDefault() */
+        input {
+            border-style: solid;
+        }
+
+/* Кнопка наверх.
+Содержит style.
+Задание. Сделайте, чтобы при прокрутке от верха экрана больше чем на 500px появлялся
+блок #goToTop, а если меньше, то чтобы исчезал.
+1. Сохраните в переменную goToTopEl ссылку на div#goToTop
+2. Назначьте обработку события scroll для объекта window.
+3. В функции-обработчике проверяйте величину window.pageYOffset если она больше
+500, тогда goToTopEl надо показать, иначе скрыть.
+4. Показывайте и скрывайте с помощью свойства display у объекта style. */
+#goToTop {
+    position: fixed;
+    z-index: 1;
+    right: 50px;
+    bottom: 50px;
+    background: orange;
+    padding: 30px;
+    font-size: 26px;
+    font-family: sans-serif;
+    cursor: pointer;
+    display: none;
+}
+
+/* Имитация загрузки картинки.
+Содержит style. images.
+Задание. Нужно через 3 секунды заменить все картинки loading.gif на картинки
+из папки images.
+1. Получите все картинки например с помощью querySelectorAll
+2. Переберите эту коллекцию с помощью цикла for, в цикле каждой картинке
+установите атрибут src (например с помощью setAttribute) равный
+"images/здесь_нужно_поставить_правильное_имя_файла".
+3. Наконец весь код оберните в setTimeout, и выставите задержку 3 сек. */
+body {
+    font-size: 30px;
+    font-family: sans-serif;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    grid-gap: 20px;
+}
+
+.product {
+    border: 1px solid gray;
+    padding: 15px;
+    text-align: center;
+}
+
+.imgWrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+
+img {
+    max-width: 100%;
+}
+
+img[src*=".gif"] {
+    width: 150px;
+}
+
+/* Замена класса/текста по клику 1-tabs. */
+.nav {
+    margin-top: 30px;
+}
+
+/* Сообщение, звук, стили по клику. */
+.message {
+    width: 300px;
+    color: white;
+    font-family: sans-serif;
+    padding: 15px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: calc(100vh + 20px);
+    transition-duration: 0.5s;
+}
+
+/* Вывод товаров. */
+.products {
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.product {
+    float: left;
+    margin-right: 20px;
+}
+
+/* Прогрессбар */
+div {
+    border: 1px solid black;
+    height: 40px;
+    width: 300px;
+}
