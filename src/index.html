@@ -7,8 +7,409 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>l_1</h1>
-    <script src="script.js"></script>
-   
+<!--"Поиск элементов на странице"-->
+<!--Поиск по id.
+Задание. Используя поиск по id, получите ссылку с текстом link4
+и выведите ее в консоль.-->
+<a href="#">link1</a>
+<a href="#">link2</a>
+<a href="#">link3</a>
+<a href="#" id="four">link4</a>
+
+
+<!--Поиск по имени класса.
+Задание. Используя поиск по имени класса, получите все элементы с классом .one
+и выведите их в консоль.-->
+<p class="one">параграф 1</p>
+<p>параграф</p>
+<p class="one">параграф 2</p>
+<h3 class="one">заголовок 1</h3>
+<h3>заголовок 2</h3>
+
+
+<!--Поиск всех элементов по селектору.
+Задание. Используя поиск по селектору (метод querySelectorAll) найдите только те ссылки с
+классом .card-link, которые находятся в .card-body
+и выведите их в консоль.-->
+<a href="#" class="card-link">Card link</a>
+<a href="#" class="card-link">Another link</a>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+        <p class="card-text">
+            Some quick example text to build on the card title and make up the bulk of the card's
+            content.
+        </p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+    </div>
+</div>
+
+<!--Поиск одного элемента по селектору.
+Задание. Используя поиск по селектору (метод querySelector) найдите div с атрибутом
+aria-valuenow="50" и выведите его в консоль.-->
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+
+<!--Название вкладки.
+Задание. Выведите содержимое тега title в консоль.-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница 1</title>
+</head>
+
+
+
+<!--"Класс Node"-->
+<!--Получение родительского узла.
+Задание. Обратитесь к элементу с классом .mt-0 и получите его родителя - элемент с
+классом .media-body.-->
+<div class="media">
+    <img src="..." class="align-self-start mr-3" alt="...">
+    <div class="media-body">
+        <h5 class="mt-0">Top-aligned media</h5>
+        <p>
+            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus
+            odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate
+            fringilla. Donec lacinia congue felis in faucibus.
+        </p>
+        <p>
+            Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et
+            magnis dis parturient montes, nascetur ridiculus mus.
+        </p>
+    </div>
+</div>
+
+<!--Добавление элемента с appendChild.
+Задание. Добавьте в div c помощью appendChild следующую разметку:
+<h3>hello world</h3>-->
+<div>
+
+</div>
+
+<!--Удаление узлов.
+Задание.
+1. Найдите элемент с классом .btn-outline-warning и удалите его.
+2. Аналогичным образом удалите элемент с классом .btn-outline-dark-->
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
+
+
+<!--Замена текста в элементе.
+Задание. Найдите кнопку с классом .btn-info и сделайте текст в кнопке: "Кнопка".-->
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+
+
+<!--"Работа с атрибутами"-->
+<!--Добавление классов.
+Задание. Найдите тег ul. И добавьте ему класс one.-->
+<ul>
+    <li>list item</li>
+    <li>list item</li>
+    <li>list item</li>
+    <li>list item</li>
+</ul>
+
+
+<!--toggle (classList.remove & classList.add в одном).
+Задание. Найдите элемент с классом .nav-link и используя метод toggle 
+из свойства classList у элемента, добавьте или уберите класс .active.-->
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+</ul>
+
+
+<!--Удаление классов.
+Задание. Найдите элемент с классом .nav-link и используя метод toggle из свойства classList у элемента, добавьте или уберите класс .active.-->
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+</ul>
+
+
+<!--Удобная вставка.
+Задание. Добавьте в div с классом .menu следующую разметку:
+<a href="#">link</a> используя метод insertAdjacentHTML.-->
+<div class="menu"></div>
+
+
+<!--Получение атрибута.
+Задание. Выведите в консоль значение атрибутов data-dismiss
+и aria-label с помощью метода getAttribute.-->
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+
+
+<!--Создание атрибута.
+Задание. Добавьте заголовку атрибут data-one="один" и атрибут
+data-two="два" с помощью метода setAttribute.-->
+<h1>Заголовок</h1>
+
+
+<!--Замена id.
+Задание. найдите заголовок с id="title" и замените значение id
+на что-то другое.-->
+<article>
+    <h2>title</h2>
+    text
+</article>
+<article>
+    <h2 id="title">title</h2>
+    text
+</article>
+
+
+<!--"Обработка событий"-->
+<!--Событие загрузки.
+Задание. Отследите когда все теги будут добавлены на страницу (событие
+DOMContentLoaded) и выведите alert'ом сообщение: "все теги добавлены на cтраницу".-->
+
+
+<!--Событие загрузки.
+Задание. Дождитесь когда все картинки загрузятся (событие load) и
+покажите с помощью alert сообщение: "все картинки загружены".-->
+    <style> img {width: 100px;} </style>
+
+<img src="https://placeimg.com/1000/1000/animals" alt="">
+<img src="https://placeimg.com/1000/1000/arch" alt="">
+<img src="https://placeimg.com/1000/1000/nature" alt="">
+<img src="https://placeimg.com/1000/1000/people" alt="">
+<img src="https://placeimg.com/1000/1000/tech" alt="">
+<img src="https://placeimg.com/1000/1000/tech/grayscale" alt="">
+<img src="https://placeimg.com/1000/1000/tech/sepia" alt="">
+
+
+<!--Событие мыши.
+Задание. Сделайте, чтобы по клику по кнопке с классом .btn появлялся
+alert('клик')-->
+<button>Кнопка</button>
+<button class="btn">Кнопка с классом btn</button>
+<button>Кнопка</button>
+
+
+<!--Событие мыши.
+Задание. Сделайте, чтобы при наведении на textarea в консоли
+появлялось сообщение: "вы навели на textarea"-->
+<textarea></textarea>
+
+
+<!--"Получение элементов и свойств"-->
+<!--Вывод картинок в консоль.
+Задание.
+1. Сохраните в переменную коллекцию с картинками.
+2. Пробегитесь по этой коллекции с помощью цикла или forEach
+и выведите каждую картинку в консоль. Выведите в консоль только
+элементы коллекции, не нужно пытаться сделать, чтобы в консоли
+появилось изображение.Задание.
+1. Сохраните в переменную коллекцию с картинками.
+2. Пробегитесь по этой коллекции с помощью цикла или forEach
+и выведите каждую картинку в консоль. Выведите в консоль только
+элементы коллекции, не нужно пытаться сделать, чтобы в консоли
+появилось изображение.-->
+<img src="https://placeimg.com/100/100/animals" alt="">
+<img src="https://placeimg.com/100/100/arch" alt="">
+<img src="https://placeimg.com/100/100/people" alt="">
+
+
+<!--Вывод имени тега.
+Задание.
+1. Сохраните в переменную коллекцию элементов с классом one. Для получения
+элементов используйте метод. getElementsByClassName()
+2. С помощью цикла переберите эту коллекцию и выведите в консоль название тега.-->
+<h3 class="one">Заголовок</h3>
+<a class="one" href="#">ссылка</a>
+<p class="one">параграф</p>
+
+
+<!--Вывод имени класса.
+Задание.
+1. Сохраните в переменную коллекцию с тегами h2, используйте метод getElementsByTagName()
+2. Пробегитесь по этой коллекции с помощью цикла и выведите в консоль значение
+атрибута class, используя свойство className.-->
+<h2 class="one lorem">Заголовок 1</h2>
+<h2 class="two ipsum">Заголовок 2</h2>
+<h2 class="three">Заголовок 3</h2>
+
+
+<!--Вывод всех классов.
+Задание.
+1. Сохраните в переменную тег div.
+2. Создайте переменную classes, и в нее сохраните значение свойства classList.
+3. C помощью forEach переберите classes и выведите каждый класс в консоль.-->
+<div class="one two three"></div>
+
+
+<!--Проверка наличия класса.
+Задание.
+1. Вам нужно получить этот div.
+2. Затем обратитесь к списку классов и с помощью метода contains()
+проверьте есть ли класс hidden у этого тега.-->
+<div class="product hidden"></div>
+
+
+<!--Удаление классов.
+Задание.
+1. Найдите все "карточки" с классом .card.
+2. Проверьте есть ли у карточки класс hidden с помощью метода contains(),
+и если есть, то удалите с помощью метода remove().-->
+<div class="card hidden">
+    Lorem ipsum dolor sit.
+</div>
+<div class="card">
+    Lorem ipsum dolor sit.
+</div>
+<div class="card hidden">
+    Lorem ipsum dolor sit.
+</div>
+<div class="card">
+    Lorem ipsum dolor sit.
+</div>
+
+<!--Добавление текста.
+Задание.
+1. Получите все ссылки.
+2. Проверьте, есть ли в ссылке текст "ссылка", и если нет, то добавьте.-->
+<a href="#">ссылка</a>
+<a href="#"></a>
+<a href="#">ссылка</a>
+<a href="#"></a>
+
+<!--Добавление классов.
+Задание.
+1. Получите все теги b.
+2. С помощью метода contains() из classList, проверьте, есть ли у тега
+класс sign, и если нет, то тогда добавьте с помощью метода add() -->
+<b>Lorem, ipsum.</b>
+<b class="sign">Lorem, ipsum.</b>
+<b class="sign">Lorem, ipsum.</b>
+<b>Lorem, ipsum.</b>
+
+
+<!--Переключение классов.
+Задание.
+1. Получите коллекцию тегов i.
+2. Пробегитесь по этой коллекции и с помощью classList.toggle() сделайте,
+чтобы где класс green есть, его не стало, а где нету, чтобы появился.-->
+    <style> .green {color: green;} </style>
+<i class="green">тут текст НЕ должен быть зеленым</i>
+<i>здесь текст сделайте зеленым</i>
+<i class="green">тут текст НЕ должен быть зеленым</i>
+<i>здесь текст сделайте зеленым</i>
+
+
+<!--"Обработка события"-->
+<!--Получение свойств.
+Задание.
+1. Получите кнопку и сохраните ее в переменную.
+2. Назначьте кнопке обработку клика.
+3. У функции-обработчика клика сделайте параметр event
+4. При клике из event.target выведите в консоль: id, имя класса (используйте
+свойство className), текст на кнопке.-->
+<button id="one" class="btn">Кнопка 1</button>
+
+
+<!--Получение всех классов.
+Задание.
+1. Назначьте обработку клика по параграфу, у функции обработчика объявите
+параметр event.
+2. При клике выведите в консоль event.target.classList
+3. Переберите с помощью forEach event.target.classList и выведите каждый класс
+в консоль.-->
+<p class="first second third">
+    Lorem ipsum dolor sit.
+</p>
+
+
+<!--Получение произвольных атрибутов.
+Задание.
+1. Сохраните ссылку на div в переменную
+2. Назначьте div'у обработку клика, у функции-обработчика объявите параметр event.
+3. При клике из event.target c помощью getAttribute() получите значение
+каждого атрибута и выведите в консоль.-->
+<div class="modal fade"
+     id="exampleModal"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    текст
+</div>
+        
+<!--Изменение разметки.
+Задание.
+1. Сохраните в переменную ссылку на .product
+2. Назначьте обработку клика по .product, у функции обработчика объявите
+параметр event.
+3. Сделайте, чтобы при клике содержимое .product поменялось на:
+<div>Другой товар</div>
+<div>Другое описание</div>
+для этого вышеописанную разметку пишите в виде строки в innerHTML.-->
+<div class="product">
+    <span class="productName">Товар 1</span>
+    Описание товара
+</div>
+
+<!--Всплытие события.
+Задание. Назначьте обработчик клика по ul и при клике выводите в консоль
+элемент, на котором произошел клик, с помощью event.target, где event - это
+объект события, передаваемый в функцию-обработчик клика.-->
+<ul>
+    <li>
+        <button>Кнопка</button>
+    </li>
+    <li>
+        <button>Кнопка</button>
+    </li>
+    <li>
+        <button>Кнопка</button>
+    </li>
+</ul>
+
+
+<!--"Стили"-->
+<!--inline стили.
+Задание. Сделайте с помощью javascript размер шрифта в кнопке 30px,
+а в textarea сделайте зеленый фон. Используйте свойство style у каждого
+из элементов.-->
+<button>Кнопка</button>
+<textarea></textarea>
+
+
+    <script src="script.js"></script>   
 </body>
 </html>
