@@ -1,55 +1,110 @@
 'use strict';
 
 /* 
-Анонимные функции 
+Замыкания 
 */
-// в переменную myFunc присваивается ссылка на анонимную функцию
-let myFunc = function() {
-    console.log('hello');
-}    
-myFunc();
+/* Замыкание - это функция, которая в своем теле использует
+        переменные и/или функции, созданные за ее пределами,
+        и которые ей не были переданы как аргументы.   */
 
+        function foo() {
+            var a = 2;
+/* Целевая функция в данном примере bar()
+'a' будет доступна в bar() несмотря на то что 'a' в bar() не была передана 
+как аргумент и не была объявлена внутри bar() */
+        function bar() {
+            console.log(a); // 2
+        }
 
-//здесь function a() уже не анонимная, у нее есть имя
-// используется для рекурсивного вызова (вызов самой себя)
-let b = 10;            
-        let myFunc = function a() {
-            console.log(b);
-            if (b > 0) {
-                b--;
-                a();
-            }
+        bar();
+    }
+
+    foo();    
+
+/* 2 пример */
+    function myFunc() {
+        let name = 'John';
+
+        function sayName() {
+            console.log(name);
+        }
+
+        return sayName;
+    }
+
+    let showName = myFunc();
+    showName();
+
+/* 3 пример */
+    function wait(message) {
+        setTimeout(function() {
+            console.log(message);
+        }, 1000);
+    }
+
+    wait("Привет, мир!"); 
+
+/* 4 пример */
+    function snakeModule() {
+        let color = 'black';
+        let speed = 3;
+        let winLengtn = 50;
+        let currentLength = 1;
+
+        function checkWin() { // это замыкание
+            return currentLength > winLengtn;
+        }
+
+        return {
+            isWin: checkWin,
         };
+    }
 
-        myFunc();
+    let snake = snakeModule();
+    console.log(snake.isWin());
+
+/* 5 пример */
+function snakeModule(color, speed) {
+    let snakeColor = color;
+    let snakeSpeed = speed;
+    let snakeWinLengtn = 50;
+    let snakeCurrentLength = 1;
+
+    function checkWin() {
+        return snakeCurrentLength > snakeWinLengtn;
+    }
+
+    function changeSpeed(speed) {
+        snakeSpeed = speed;
+    }
+
+    function getSpeed() {
+        return snakeSpeed;
+    }
+
+    return {
+        isWin: checkWin,
+        changeSpeed: changeSpeed,
+        getSpeed: getSpeed,
+    };
+}
+
+let snake = snakeModule('yellow', 10);
+console.log(snake.getSpeed());
+snake.changeSpeed(2);
+console.log(snake.getSpeed());
 
 
-/* Немедленно вызываемое функциональное выражение.
-Может использоваться для создания внутри себя области видимости
-которая будет недоступна извне. То же что и в теле обычной функции.
-Практически неприменимо в настоящее время */  
-//Immediately Invoked Function Expression
-(function () {
-    console.log('hello');
-})();
 
-
-//Immediately Invoked Function Expression
-// Пример использования
-(function () {
-    let $ = 'hello';
-    let jQuery = 'world';
-    console.log($);
-    console.log(jQuery);
-})();
-/* при подключении настоящего jquery переменные внутри функционального 
-выражения не будут пересекаться с внешними переменными */  
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-        let body = $('body');
-        console.log(body);
-
-// Функция обратного вызова (callback функция)
-// здесь function - это анонимная функция 
-document.querySelector('button').addEventListener('click', function(event) {
-    console.log(event);
-})
+/* Функция в коде должна зависеть от передаваемых ей параметров
+замыкания можно использовать в крайнем случае. 
+Лучше не использовать вообще */
+/* Как надо */
+function hello(userName) { 
+    return 'Привет, ' + userName;
+}
+/* Как не надо */
+let userName = 'Вася';
+function hello() { 
+    return 'Привет, ' + userName;
+}
