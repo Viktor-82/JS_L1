@@ -1,192 +1,274 @@
 'use strict';
-/* Добавляем слушатель событий, прописываем на какое событие он 
-будет реагировать, прописываем действия в анонимную функцию */
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('html загружен, возможно не загружены картинки или стили');
-});
-/* Записываем в переменную тег button для того чтобы можно было
-повесить на него обработчик событий */
-let button = document.querySelector('button');
-/* click - обработка события на нажатие мыши */
-button.addEventListener('click', function(event){
-    console.log('click');
-    console.dir(event);
-})
-/* В консоли отладчика браузера поставив точки остановки и 
-наведя курсор на event можно увидеть объект event и все его свойства
-(координаты и т.д.) mouseover - реагирует на наведение мыши */
-button.addEventListener('mouseover', function(event){
-    console.log('mouseover');
-});
-/* keydown - реагирует на нажатие любой кнопки клавиатуры */
-window.addEventListener('keydown', function(event){
-    console.log(event);
-});
-/* keyup - на отпускание клавиши */
-window.addEventListener('keyup', function(event){
-    console.log(event);
-});
-/* Вешаем событие на элемент без объявления переменной 
-при нажатии на button находящемся в других тегах по умолчанию 
-событие всплывает к корню элементов*/
-document.querySelector('button').addEventListener('click', function(event){
-    console.log(event);
-});
+/* 
+this - сам объект 
+*/
+const user = {
+    name: 'Alex';
+    showName: function() {
+        alert(this.name);
+    }
+}
+/* this в showName - сам объект user */
+user.showName();// Alex 
 
-document
-    .querySelector('p')
-    .addEventListener('click', function(event){
-        console.log(event);
-    });
 
-document
-    .querySelector('div')
-    .addEventListener('click', function(event){
-        console.log(event);
-    });
 
-/* Предотвращаем всплытие событий. Метод event.stopPropagation() 
-ставим на том элементе дальше которого событие сработать не должно */
-document.querySelector('button')
-    .addEventListener('click', function(event){
-        console.log(event);
-        console.log('button clicked');
-        event.stopPropagation;
-    });
+/* 
+this передается методом .call()
+ */
+function showName() {
+    console.log(this);
+    alert(this.userName);
+}
+const user1 = {
+    userName: 'Alex'
+}
+const user1 = {
+    userName: 'John'
+}
+/* Вызываем showName методом .call() и передаем this user1 
+call() явно назначает this */
+showName.call(user1);// Alex
+showName.call(user2);// John
 
-document
-    .querySelector('p')
-    .addEventListener('click', function(event){
-        console.log('p clicked');
-    });
 
-document
-    .querySelector('div')
-    .addEventListener('click', function(event){
-        console.log('div clicked');
-    });
+/* 
+Метод .call() передает несколько параметров
+ */
+function addInfo(age, position) {
+    this.age = age;
+    this.position = position;
+}
+/* 2) Теперь в объекте кроме имени есть еще 
+возраст и должность */
+let user1 =  {
+    userName: 'Alex'
+}
+/* 1) Берем ссылку (addInfo) вызываем (call) передаем this (user1)
+и другие параметры (30, developer) */
+addInfo.call(user1, '30', 'developer');
+console.log(user1);
 
-/* Чтобы можно было удалять обработчик событий ссылка на функцию обработчика должна быть 
-записана в переменную. Написание анонимной функции не сработает */
-let clickFunction = function (event) {
-    console.log(event);
+
+/*
+ Метод .apply() передает данные в виде массива
+  */
+ function addInfo(age, position) {
+     console.log(age, position);
+ }
+ let user1 = {
+     userName: 'Alex'
+ }
+ addInfo.apply(user1, ['30', 'developer']);
+
+
+ /* 
+ Метод .bind() жестко привязывает this. Поменять его в дальнейшем невозможно. В отличии от .call() создает ссылку на новую функцию.
+ */
+ let user = {
+    userName: 'John',
+    sayHello() {
+        console.log(this);
+        console.log(this.userName);
+    }
 };
 
-let checkEvent = document.querySelector('.checkEvent');
-checkEvent.addEventListener('click', clickFunction);
+//Window
+//undefined
+setTimeout(user.sayHello, 1000);
 
-let switchOff = document.querySelector('.switchOff');
-/* Берем элемент checkEvent назначаем слушатель событий .removeEventListener
-на событие click и передаем ссылку на функцию подлежащую удалению */
-switchOff.addEventListener('click', function(){
-    checkEvent.removeEventListener('click', clickFunction);
-})
+//bind создал новую функцию, в которой this всегда равен user
+setTimeout(user.sayHello.bind(user), 1000);
 
-/* Добавление изменение стилей элемента */
-let h1 = document.querySelector('h1');
-console.log(h1.style);
+//bind - создает новую функцию, которую потом можно вызвать
+let showName = user.sayHello.bind(user);
+showName();
+console.log(showName);
 
-h1.style.color = "#A101A6";
-h1.style.backgroundColor = "#CFF700";// в отличии от CSS стиль camelCase
+//это не сработает, контекст уже жестко привязан
+showName.call(Window);
 
-/* Добавление изменение стилей элемента путем добавления класса */
-let h2 = document.querySelector('h2');
-h2.classList.add('attention');
 
-document
-    .querySelector('.delete')
-    .addEventListener('click', function(){
-        h2.classList.remove('attention');
-    });
-
-/* Отслеживание/управление на событие нажатия правой кнопки мыши
-(контекстное меню) */
-document.addEventListener('contextmenu', function(event) {
-    console.log('context menu');
-    // event.preventDefault(); // отключение контекстного меню
-    /* Получение координат мыши. На основе этих данных можно 
-    выводить свое контекстное меню (div в месте клика)  */
-    console.log(event.clientX, event.clientY);
-
-})
-
-/* Отслеживание событий копирования */
-document.addEventListener('copy', function(event) {
-    const copiedText = document.getSelection().toString();
-    /* Добавляем к скопированному тексту в буфер обмена свой поясняющий текст */
-    event.clipboardData.setData('text/plain', copiedText + "Этот текст скопирован с сайта sitename.com");
-    event.preventDefault();
-});
-
-/* Отслеживание события вырезания */
-document.addEventListener('cut', (event) => {
-    const selection = document.getSelection();// получаем объект выделения
-    /* В буфер обмена clipboarlData вставляем данные в виде текста text/plain */
-    event.clipboardData.setData('text/plain', selection.toString().toUpperCase());
-    selection.deleteFromDocument();// удаляем скопированные данные из документа
-    event.preventDefault();// прерываем выполнение по умолчанию
-});
-
-/* Отслеживание события двойной клик */
-document.querySelector('p').addEventListener('dblclick', function(event) {
-    // console.log(event);
-    console.log('p double clicked');
-});
-    
-/* Отслеживание события resize (изменение размера окна) */
-window.addEventListener('resize', function(event) {
-    console.log(event.target.innerWidth, event.target.innerHeight);// получаем размеры окна
-});
-
-/* Отслеживание события scroll (прокрутка) можно использовать для анимации страницы
-при этом сначала нужно получить объекты воздействия и их позицию при помощи JS */
-window.addEventListener('scroll', function(event) {
-    console.log(window.pageYOffset);// получаем отступ сверху
-});
-
-/* Событие на снятие фокуса с поля для ввода (blur) */
-document.querySelector('input').addEventListener('blur', function() {
-    console.log('blur');
-});
-
-/* Событие на наведение фокуса */
-const input = document.querySelector('input');
-input.addEventListener('focus', function(event) {
-    const styles = "outline: 3px solid green;";
-    event.target.style.cssText = styles;// присваиваем стили
-});
-input.addEventListener('blur', function(event) {
-    event.target.style.removeProperty('outline');// удаляем стили при снятии фокуса
-});
-
-/* Отслеживание любого изменения (событие change) */
-document.querySelector('select').addEventListener('change', function(event) {
-    console.log(event.target.value);// значение элемента
-    console.dir(event.target.options[event.target.options.selectedIndex].innerText);// текст внутри элемента
-});
-
-/* Отследить изменение текста в каком либо селекторе */
-document.querySelector('textarea').addEventListener('change', function(event) {
-    console.log(event.target.value);
-});
-
-/* Событие reset */
-const formEl = document.querySelector('form');
-
-formEl.addEventListener('reset', function(event) {
-    if (!confirm("Вы уверены, что хотите очистить форму?")) {
-        event.preventDefault();
+/* 
+this в стрелочных функциях 
+*/
+let user = {
+    firstName: 'John',
+    sayUsual() {
+        setTimeout(function() { //вызывается относительно window            
+            console.log(this);
+        }, 1000);
+    },
+    sayArrow() {
+        setTimeout(() => { //вызывается относительно user
+            console.log(this);
+        }, 2000);
     }
+};
+user.sayUsual(); //window
+user.sayArrow(); //user
+
+/* 
+        let fn = () => {
+            console.log(this);
+        }
+        */
+
+        /* этот объект конструируется во время работы анонимной функции, которая запускается 
+        при открытии страницы и в этой анонимной функции this указывает на window*/
+        let user = {
+            firstName: 'John',
+            sayArrow: () => { //ссылка на эту функцию создается когда конструируется сам объект user, 
+                console.log(this); //поэтому это тоже самое что и функция fn выше
+                
+            },
+        };
+        user.sayArrow();//window
+/* в стрелочной функции this равен this'у, который был у вызывающей функции в 
+момент объявления стрелочной функции, не в момент вызова */
+
+
+
+/* 
+this при клике на элементе 
+*/
+// в обоих режимах работает одинаково
+const button = document.querySelector('button');
+button.addEventListener('click', function() {
+    console.log(this); //this будет указывать на button
 });
 
-/* Событие submit (отправка формы) */
-const inputEl = document.querySelector('input');
-const errorEl = document.querySelector('.error');
-const formEl = document.querySelector('form');
+button.addEventListener('click', function() {
+    console.log('hello');
+});
 
-formEl.addEventListener('submit', function(event) {
-    if (inputEl.value == "") {
-        event.preventDefault();// останавливаем отправку если форма пустая
-        errorEl.innerText = "input не может быть пустым";
+button.addEventListener('mouseover', function() {
+    console.log('world');
+});
+
+/* чтобы посмотреть все обработчики назначенные на элемент:
+1. в браузере в разделе Elements находим наш элемент
+2. переходим в раздел Event Listeners
+3. находим нужный тип события
+4. далее можно нажать на ссылку справа, которая
+покажет в коде функцию обрабатывающую данное событие */
+
+class User {
+    constructor(username) {
+        this.username = username;
+        this.buttonElement = document.querySelector('button');
+
+        /* в таком виде this будет HTMLButton​Element, т.к. при
+        клике, функцию showUserName вызывает именно объект
+        HTMLButton​Element, а у него нет свойства username и
+        мы получим:
+        Uncaught ReferenceError: showUserName is not defined */
+        // this.buttonElement.addEventListener('click', this.showUserName);
+
+        /* в этом случае мы с помощью bind создаем новую функцию из
+        this.showUserName, в которой this всегда будет указывать на
+        объект типа User. Объект события MouseEvent по прежнему будет
+        передаваться в функцию обработчик.*/
+        this.buttonElement.addEventListener('click', this.showUserName.bind(this))
     }
-})
+
+    showUserName(event) {
+        alert(this.username);
+        // мы также можем здесь получать объект события
+        console.log(event);
+    }
+}
+
+const user1 = new User('Alex');
+
+/* 
+this в стрелочных функциях в классах
+*/
+class Hello {
+    one = 'один';
+
+    world = () => {
+        // внутри стрелочных функций this всегда будет указывать на созданный объект
+        console.log(this.one);
+    }
+}
+
+let hello1 = new Hello;
+setTimeout(hello1.world, 2000);
+hello1.world();
+
+
+/* 
+this в стрелочных функциях в классах при клике на элементе
+*/
+class Hello {
+    button = document.querySelector('button');
+
+    constructor() {
+        this.button.addEventListener('click', this.buttonClickHandler);
+    }
+
+    buttonClickHandler = (event) => {
+        //теперь в функции обработчике this всегда будет указывать на сам объект,
+        //а не на кнопку
+        console.log(this);
+    }
+}
+
+let hello1 = new Hello;
+
+
+/* 
+this в конструкторе 
+*/
+// в стиле ES5
+function Post(id, text) {
+    this.id = id;
+    this.text = text;
+    console.log(this); //this указывает на вновь создаваемый объект
+}
+
+const post1 = new Post(1, 'hello');
+const post2 = new Post(2, 'world');
+
+// в стиле ES6
+class Post {
+    constructor(id, text) {
+        this.id = id;
+        this.text = text;
+        console.log(this); //this указывает на вновь создаваемый объект
+    }
+}
+
+const post1 = new Post(1, 'hello');
+const post2 = new Post(2, 'world');
+
+
+/* 
+this в цепочке прототипов при вызове методов 
+*/
+class BaseUser {
+    constructor() {
+        this.username = null;
+    }
+
+    showName() {
+        console.log(this.username);
+    }
+}
+
+const baseuser = new BaseUser();
+baseuser.showName(); //null
+
+class User extends BaseUser {
+    constructor(name) {
+        super();
+        this.username = name;
+    }
+}
+
+const user = new User('alex');
+user.showName(); //alex
+
+/* Не смотря на то, что showName есть только в BaseUser, в момент его вызова
+this в нем указывает на user. */
